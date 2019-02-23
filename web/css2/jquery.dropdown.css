@@ -1,0 +1,88 @@
+div.dropdown {
+	color: #555;
+	position: relative;
+}
+div.submenu {
+	position: absolute;
+	z-index: 80;
+	width: 280px;
+	display: none;
+	padding: 0;
+	margin-top: 44px;
+	box-shadow: 0px 0px 14px rgba(0,0,0,0.3);
+	background: #FFF;
+}
+div.submenu:after, div.submenu:before {
+	bottom: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+div.submenu:after {
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: #FFF;
+	border-width: 8px;
+	left: 20px;
+	margin-left: -8px;
+}
+div.submenu:before {
+	border-color: rgba(204, 204, 204, 0);
+	border-bottom-color: #CCC;
+	border-width: 9px;
+	left: 20px;
+	margin-left: -9px;
+}
+.dropdown, .dropdown li {
+	margin: 0;
+	padding: 0;	
+}
+.dropdown ul li a {  
+    color: #555;
+    display: block;
+    padding: 8px 15px;
+	cursor: pointer;
+	text-decoration:none;
+}
+.dropdown ul li a:hover {
+    background: #33c3f0;
+    color: #FFF;
+}
+.dropdown .proileLink:hover {
+    color: #0FA0CE;
+}
+.dropdown ul li:last-child a {
+    border-top: 1px solid #DDD;
+}
+a.account {
+	display: block;
+	padding: 0 14px 0 0;
+	margin: 10px 20px 10px 0;
+	text-decoration: none;
+	background: url('../../img/theme/user/arrow-down.png') no-repeat right;
+	background-size: 6px 6px;
+	font-weight: bold;
+}
+.root div {
+	float: left;
+	clear: both;	
+}
+.root img {
+	float: left;
+	margin: 15px;	
+}
+.root p {
+	float: left;
+	margin-top: 20px;
+}
+.root ul {
+	clear: both;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.notifications {
+	margin-left: 20px;	
+}

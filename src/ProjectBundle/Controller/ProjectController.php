@@ -51,7 +51,6 @@ class ProjectController extends Controller
 
     }
 
-
     public function delete_manage_projectsAction($manage_project)
     {
         $em = $this->getDoctrine()->getManager();
@@ -60,25 +59,6 @@ class ProjectController extends Controller
         return $this->redirectToRoute('list_manage_projects');
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * @Security("has_role('ROLE_FREELANCER')")

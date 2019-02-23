@@ -1,0 +1,284 @@
+/* Forms - Correction d'un conflit Selectize / Skeleton */
+.selectize-input { min-height: 38px; line-height: 20px; }
+.selectize-input .item { font-weight: 600; }
+.selectize-input input { height: 20px; }
+.selectize-control { margin: 0 0 15px 0; }
+/* Forms */
+input[type=text], input[type=email], input[type=password], input[type=number], textarea, select {
+ 	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	color: #303030;
+	font-family: inherit;
+	-webkit-font-smoothing: inherit;
+	border: 1px solid #d0d0d0;
+	display: block;
+	width: 100%;
+	position: relative;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+    margin: 0 0 15px 0;
+}
+input[type=file] {
+    width: 100%;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+.checkbox label, .radio label {
+	display: inline;
+    margin-left: 10px;
+	font-weight: normal;
+}
+.checkbox input {
+    margin: 0;
+}
+.checkboxes .checkbox {
+    float: left;
+    border-bottom: 1px solid #EEE;
+    border-top: 1px solid #FFF;
+    background: #F9F9F9;
+    padding: 4px 8px;
+    margin: 2px;
+    border-radius: 4px;
+}
+.checkboxes .checkbox input[type="checkbox"]:checked+label {
+	color: #999;	
+}
+select {
+	border: 1px solid #b8b8b8;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.8);
+	box-shadow: 0 1px 0 rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.8);
+	background-color: #f9f9f9;
+	background: url('../img/theme/button/arrowselect.png') right no-repeat, linear-gradient(to bottom, #fefefe, #f2f2f2) repeat-x;
+}
+.required label:first-child::after {
+}
+.chars {
+	color: #999;
+	margin-left: 5px;
+	font-size: 12px;
+	font-weight: normal;
+}
+.dateForm select:first-of-type {
+    width: 75px;
+}
+.dateForm select:last-of-type {
+    width: 90px;
+    margin-right: 0;
+}
+.dateForm select {
+	display: inline;
+	width: 120px;
+	margin-right: 10px;
+}
+/* Errors */
+.error input {
+    border-color: #f1005b;
+}
+.error-message {
+    display: block;
+    margin: 0 0 15px 0;
+	color: #f1005b;	
+}
+/* Flash Message */
+#flashMessage {
+	position: fixed;
+    width: 100%;
+	top: 0;
+	background: #f9edbe;
+	text-align: center;
+	z-index: 50;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+	font-weight: bold;
+	padding: 15px 0;
+}
+#flashMessage a {
+	color: #444444;
+	text-decoration: underline;	
+}
+.flash-message-content {
+    padding: 0 10%;
+}
+#flashMessage .flashClose {
+	display: block;
+	position: absolute;
+	top: 17px;
+	right: 15px;
+	width: 16px;
+	height: 16px;
+	text-indent: -9999px;
+	background: url('../img/theme/button/x_alt_32x32.png') no-repeat;
+	background-size: 16px 16px;	
+}
+/* Tabs */
+.tabs {
+    list-style: none;
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #bbb;
+}
+.tabs li {
+	margin: 0;
+	font-size: 14px;
+}
+.tabs li:first-child a {
+	border-left: 1px solid #bbb;	
+}
+.tabs li a {
+	float: left;
+	background: #F9F9F9;
+	margin-bottom: -1px;    
+    display: inline-block;
+    height: 38px;
+    padding: 0 30px;
+    color: #555;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-top: 1px solid #bbb;
+    border-right: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.tabs li a.current {
+	position: relative;
+	border-bottom: 1px solid #FFF;
+	background: #FFF;
+	color: #999;
+}
+/* Pagination */
+.disabled {
+	display: none;	
+}
+.pagination span a {
+	border-right: 1px solid #DDD;
+	color: #999;
+	padding: 4px 12px;
+	margin: 0;
+}
+.pagination .current {
+	background: #40b9db;
+	padding: 4px 12px;
+	margin: 0;
+	border: none;
+	color: #FFF;	
+}
+.pagination .prev a, .pagination .next a {
+	background: #FFF;
+	border: none;
+	font-weight: bold;	
+}
+/* Search */
+#search label {
+	display: inline;
+	margin-left: 6px;
+	margin-right: 10px;
+}
+#search .checkbox {
+	float: left;
+    margin-right: 15px;
+}
+/* Bullet */
+.bullet {
+	display: block;
+	float: left;
+	text-align: center;
+	width: 32px;
+	height: 32px;
+	text-indent: -9999px;
+}
+.read {
+	background: url('../img/theme/bullet/bullet-read.png') no-repeat center;
+	background-size: 8px 8px;		
+}
+.unread {
+	background: url('../img/theme/bullet/bullet-unread.png') no-repeat center;	
+	background-size: 8px 8px;
+}
+.unread:hover {
+	background: url('../img/theme/bullet/bullet-hover.png') no-repeat center;	
+	background-size: 8px 8px;	
+}
+/* Ajax form */
+#ajaxform-container .ajaxsubmit {
+    margin: 0;
+    float: left;
+    clear: both;
+}
+.bloc {
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+/* Options button */
+.options a img {
+    width: 16px;
+    height: 16px;
+    margin-top: 12px;
+    margin-left: 12px;
+}
+.options a {
+    float: right;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    opacity: 0.4;
+    margin-left: 10px;
+}
+.options a:hover {
+   opacity: 0.7;
+}
+/* Reviews */
+.review {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: left;
+}
+.review > a {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+    color: #CCC;
+}
+.review > a:hover,
+.review > a:hover ~ a {
+    color: transparent;
+}
+.review > a:hover:before,
+.review > a:hover ~ a:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: #33c3f0;
+}
+/* File input */
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    display: inline-block;
+    padding: 6px 12px 6px 28px;
+    cursor: pointer;
+    margin-bottom: 15px;
+	background: url('../img/theme/button/upload.png') no-repeat left;
+    background-size: 20px 20px;
+}

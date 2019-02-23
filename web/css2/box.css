@@ -1,0 +1,35 @@
+/* override default feather style... */
+.portfoliobox {
+    background: rgba(256,256,256, 0.8);
+}
+.portfoliobox .featherlight-content {
+    width: 80%;
+    height: 80%;
+	padding: 0;
+	color: #fff;
+	background: transparent;
+}
+.portfoliobox .featherlight-close {
+    color: #fff;
+    background: transparent;
+}
+/**
+ * Featherlight Loader
+ *
+ * Copyright 2015, WP Site Care http://www.wpsitecare.com
+ * MIT Licensed.
+ */
+.featherlight-loading .featherlight-content {
+    background: url('../img/theme/loader/image-loader.gif') center center;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 80px;
+    min-width: 0;
+}
+.featherlight-loading .featherlight-content > * {
+    display: none !important;
+}
+.featherlight-loading .featherlight-close,
+.featherlight-loading .featherlight-inner {
+    display: none;
+}

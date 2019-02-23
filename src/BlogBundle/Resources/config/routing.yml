@@ -1,3 +1,40 @@
 blog_homepage:
     path:     /
     defaults: { _controller: BlogBundle:Default:index }
+
+blog_pageBlog:
+    path:     /pageBlog
+    defaults: { _controller: BlogBundle:Comment:pageBlog }
+
+blog_pageBlogPost:
+    path:     /pageBlogPost
+    defaults: { _controller: BlogBundle:Comment:pageBlogPost }
+
+blog_affiche:
+    path:     /affiche
+    defaults: { _controller: BlogBundle:Comment:affiche }
+
+blog_ajout:
+    path:     /ajout
+    defaults: { _controller: BlogBundle:Comment:ajout }
+
+blog_delete:
+    path:     /delete/{id}
+    defaults: { _controller: BlogBundle:Comment:supprimer }
+
+blog_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BlogBundle:Comment:edit }
+
+
+blog_ajoutArticle:
+    path:     /add
+    defaults: { _controller: BlogBundle:Article:add }
+
+blog_afficheArticle:
+    path:     /show
+    defaults: { _controller: BlogBundle:Article:show }
+
+blog_listArticle:
+    path:     /list
+    defaults: { _controller: BlogBundle:Article:list }
