@@ -6,21 +6,24 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Employer
- *
- * @ORM\Table(name="employer")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\EmployerRepository")
  */
 class Employer extends User
 {
+    public function __construct()
+    {
+        parent::__construct();
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    }
+
+    function loadFromParentObj( $parentObj )
+    {
+        $objValues = get_object_vars($parentObj); // return array of object values
+        foreach($objValues AS $key=>$value)
+        {
+            $this->$key = $value;
+        }
+    }
 
     /**
      * @var string
@@ -35,6 +38,19 @@ class Employer extends User
      * @ORM\Column(name="about", type="string", length=255)
      */
     private $about;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="BookmarkBundle\Entity\EmployersBookmark", mappedBy="bookmarkingEmployer")
+     */
+    private $bookmarks;
+
+
+
+
+
+
+
 
 
     /**

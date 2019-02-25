@@ -11,6 +11,10 @@ find_freelancer:
     path:     /search/freelancers
     defaults: { _controller: FrontBundle:Pages:findFreelancer}
 
+freelancer_profile:
+    path:     /freelancer/{id}
+    defaults: { _controller: FrontBundle:Pages:freelancerProfile}
+
 find_employer:
     path:     /search/companies
     defaults: { _controller: FrontBundle:Pages:findCompany}
@@ -18,4 +22,5 @@ find_employer:
 company_profile:
     path:     /search/companies/{id?}
     defaults: { _controller: FrontBundle:Pages:companyProfile}
+
 
