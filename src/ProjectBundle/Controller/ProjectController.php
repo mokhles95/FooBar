@@ -74,7 +74,6 @@ class ProjectController extends Controller
         }
         return $this->render('@Project/Employer/post_project.html.twig', ["form" => $form->createView()]);
 
-
     }
 
 
