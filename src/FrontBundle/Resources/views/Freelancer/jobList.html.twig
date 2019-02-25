@@ -148,24 +148,23 @@
                         </select>
                     </div>
                 </div>
-                <!-- start of jobs list -->
 
                 <div class="listings-container compact-list-layout margin-top-35">
-                    {% for job in jobs %}
+
                     <!-- Job Listing -->
-                    <a href="{{ path('job_page',{'id':job.id})}}" class="job-listing">
+                    <a href="{{ path('job_page')}}" class="job-listing">
 
                         <!-- Job Listing Details -->
                         <div class="job-listing-details">
 
                             <!-- Logo -->
                             <div class="job-listing-company-logo">
-                                <img src="{{ asset('assets/images/company-logo-01.png') }}" alt="">
+                                <img src="{{ asset('images/company-logo-01.png') }}" alt="">
                             </div>
 
                             <!-- Details -->
                             <div class="job-listing-description">
-                                <h3 class="job-listing-title">{{ job.title }}</h3>
+                                <h3 class="job-listing-title">Bilingual Event Support Specialist</h3>
 
                                 <!-- Job Listing Footer -->
                                 <div class="job-listing-footer">
@@ -182,7 +181,42 @@
                             <span class="bookmark-icon"></span>
                         </div>
                     </a>
-                    {%  endfor %}
+
+
+
+
+
+
+                    <!-- Job Listing -->
+                    <a href="{{ path('job_page')}}" class="job-listing">
+
+                        <!-- Job Listing Details -->
+                        <div class="job-listing-details">
+
+                            <!-- Logo -->
+                            <div class="job-listing-company-logo">
+                                <img src="{{ asset('images/company-logo-06.png') }}" alt="">
+                            </div>
+
+                            <!-- Details -->
+                            <div class="job-listing-description">
+                                <h3 class="job-listing-title">Human Resources Consultant</h3>
+
+                                <!-- Job Listing Footer -->
+                                <div class="job-listing-footer">
+                                    <ul>
+                                        <li><i class="icon-material-outline-business"></i> Trideo</li>
+                                        <li><i class="icon-material-outline-location-on"></i> San Francissco</li>
+                                        <li><i class="icon-material-outline-business-center"></i> Full Time</li>
+                                        <li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Bookmark -->
+                            <span class="bookmark-icon"></span>
+                        </div>
+                    </a>
                 </div>
 
 
