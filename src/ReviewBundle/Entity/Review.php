@@ -56,10 +56,16 @@ class Review
     private $projectId;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Freelancer")
-     * @ORM\JoinColumn(name="freelancerId",referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="UserBundle\Entity\Freelancer")
+     * @ORM\JoinColumn(name="freelancerReviewedId", referencedColumnName="id")
      */
-    private $freelancerId;
+    private $freelancerReviewedId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Employer")
+     * @ORM\JoinColumn(name="employerReviewerId",referencedColumnName="id")
+     */
+    private $employerReviewerId;
 
 
     /**
@@ -193,27 +199,37 @@ class Review
     }
 
     /**
-     * Set freelancerId
-     *
-     * @param integer $freelancerId
-     *
-     * @return Review
+     * @return mixed
      */
-    public function setFreelancerId($freelancerId)
+    public function getFreelancerReviewedId()
     {
-        $this->freelancerId = $freelancerId;
-
-        return $this;
+        return $this->freelancerReviewedId;
     }
 
     /**
-     * Get freelancerId
-     *
-     * @return int
+     * @param mixed $freelancerReviewedId
      */
-    public function getFreelancerId()
+    public function setFreelancerReviewedId($freelancerReviewedId)
     {
-        return $this->freelancerId;
+        $this->freelancerReviewedId = $freelancerReviewedId;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEmployerReviewerId()
+    {
+        return $this->employerReviewerId;
+    }
+
+    /**
+     * @param mixed $employerReviewerId
+     */
+    public function setEmployerReviewerId($employerReviewerId)
+    {
+        $this->employerReviewerId = $employerReviewerId;
+    }
+
+
 }
 

@@ -3,10 +3,12 @@
 namespace ReviewBundle\Controller;
 
 use ReviewBundle\Entity\Review;
+use ReviewBundle\Entity\ReviewEmp;
+use ReviewBundle\Form\ReviewEmpType;
 use ReviewBundle\Form\ReviewType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class ReviewController extends Controller
@@ -26,7 +28,7 @@ class ReviewController extends Controller
         return $this->render('ReviewBundle:Review:affiche_Review.html.twig', array('review'=>$review));
     }
 
-    public function addReviewAction(Request $request)
+    public function addReviewAction(Request $request )
     {
         $review = new Review();
         $form = $this->createForm(ReviewType::class,$review);
@@ -75,7 +77,9 @@ class ReviewController extends Controller
 
     public function addReviewEmpAction(Request $request)
     {
+        $currentUser=$this->getUser();
         $reviews = new ReviewEmp();
+        $reviews->setFreelancerReviewerId($currentUser);
         $form = $this->createForm(ReviewEmpType::class,$reviews);
         $form->handleRequest($request);
 
