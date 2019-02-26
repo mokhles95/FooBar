@@ -8,6 +8,10 @@ employer_dashboard:
 
 new_note:
     path: /new/{note?}/{priority?}
-    defaults: { _controller: DashboardBundle:Employer:new }
+    defaults: { _controller: DashboardBundle:Freelancer:new }
+
+delete_self_note:
+    path:     /delete_self_note/{id}
+    defaults: { _controller: NoteBundle:Note:delete_self_note }
 
 

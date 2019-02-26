@@ -3,6 +3,7 @@
 namespace NoteBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,8 +14,14 @@ class NoteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('priority')->add('noteText');
-    }/**
+        $builder->add('priority',ChoiceType::class,array(
+            'choices'=>['Height'=>'Height',
+                        'Medium'=>'Medium',
+                        'Low'=>'Medium'])
+        )->add('noteText');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

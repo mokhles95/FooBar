@@ -14,6 +14,14 @@ use Symfony\Component\Serializer\Serializer;
 class NoteController extends Controller
 {
 
+
+    public function self_notes_listAction()
+    {
+        $self_notes_list= $this->getDoctrine()->getRepository(Note::class)->findAll();
+        return $this->render('@Note/Freelancer/self_notes_list.html.twig',array('self_notes_list' => $self_notes_list));
+
+    }
+
     public function create_self_noteAction(Request $request)
     {
         $note = new Note();
@@ -24,26 +32,35 @@ class NoteController extends Controller
         {
             $em->persist($note);
             $em->flush();
-            return $this->redirectToRoute('self_notes');
+            return $this->redirectToRoute('self_notes_list');
         }
-        return $this->render('@Note/Freelancer/self_notes.html.twig',['form'=>$form->createView()]);
+        return $this->render('@Note/Freelancer/create_self_note.html.twig',['form'=>$form->createView()]);
 
     }
 
 
-    public function self_notesAction()
-    {
-        $notes= $this->getDoctrine()->getRepository(Note::class)->findAll();
-        return $this->render('@Note/Freelancer/self_notes.html.twig',["notes" => $notes]);
-    }
-
-
-    public function delete_selfNoteAction(Note $note)
+    public function delete_self_noteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $em->remove($note);
+        $self_note=$em->getRepository(Note::class)->find($id);
+        $em->remove($self_note);
         $em->flush();
-        return $this->redirectToRoute('self_notes');
+        return $this->redirectToRoute('self_notes_list');
+
     }
 
+    public function update_self_noteAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $self_note=$em->getRepository(Note::class)->find($id);
+        $form = $this->createForm(NoteType::class,$self_note);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()&& $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($self_note);
+            $em->flush();
+            return $this->redirect($this->generateUrl('self_notes_list'));
+        }
+        return $this->render('@Note/Freelancer/create_self_note.html.twig',['form'=>$form->createView()]);
+    }
 }

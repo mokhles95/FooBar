@@ -1,5 +1,6 @@
-{% extends "Dashboard/Employer/dashboard_layout.html.twig" %}
-{% block content %}
+{% extends "Home/Freelancer/home_layout.html.twig" %}
+
+{% block homecontent %}
 
     <!-- Page Content
     ================================================== -->
@@ -12,7 +13,7 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Dashboard</a></li>
-                <li>Post a Project</li>
+                <li>Add a Note</li>
             </ul>
         </nav>
     </div>
@@ -34,73 +35,15 @@
                     <div class="row">
                         <div class="col-xl-4">
                             <div class="submit-field">
-                                <h5>Project Name</h5>
-                                {{ form_widget(form.projectName,{ 'attr': {'class' : 'with-border','name' : 'projectName', 'placeholder': 'e.g. build me a website'|trans} }) }}
-                            </div>
-                        </div>
-
-                        <div class="col-xl-4">
-                            <div class="submit-field">
-                                <h5>Category</h5>
-                                {{ form_widget(form.projectCategory,{ 'attr': {'aria-expanded':'false','title':'Select Category','role':'button','data-toggle':'dropdown','class' : 'btn dropdown-toggle bs-placeholder btn-default','name' : 'projectCategory', 'placeholder': 'e.g. web'|trans} }) }}
-                            </div>
-                        </div>
-
-                        <div class="col-xl-4">
-                            <div class="submit-field">
-                                <h5>Location  <i class="help-icon" data-tippy-placement="right" data-tippy="" data-original-title="Leave blank if it's an online job"></i></h5>
-                                <div class="input-with-icon">
-                                    <div id="autocomplete-container"><div class="pac-container pac-logo" style="display: none; width: 287px; position: absolute; left: 997px; top: 393px;"></div>
-                                        {{ form_widget(form.projectLocation,{ 'attr': {'class' : 'with-border','id':'autocomplete-input','name' : 'projectLocation','autocomplete':'off', 'placeholder': 'Anywhere'|trans} }) }}
-                                    </div>
-                                    <i class="icon-material-outline-country-on"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-6">
-                            <div class="submit-field">
-                                <h5>What is your estimated budget?</h5>
-                                <div class="row">
-                                    <div class="col-xl-6">
-                                        <div class="input-with-icon">
-                                            {{ form_widget(form.minBudget,{ 'attr': {'class' : 'with-border','name' : '.minBudget', 'placeholder': 'Minimum'|trans} }) }}
-                                            <i class="currency">USD</i>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="input-with-icon">
-                                            {{ form_widget(form.maxBudget,{ 'attr': {'class' : 'with-border','name' : 'maxBudget', 'placeholder': 'Maximum'|trans} }) }}
-                                            <i class="currency">USD</i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- radio -->
-
-
-                            </div>
-                        </div>
-
-                        <div class="col-xl-6">
-                            <div class="submit-field">
-                                <h5>What skills are required? <i class="help-icon" data-tippy-placement="right" data-tippy="" data-original-title="Up to 5 skills that best describe your project"></i></h5>
-                                <div class="keywords-container">
-                                    <div class="keyword-input-container">
-                                        {{ form_widget(form.projectSkill,{ 'attr': {'class' : 'with-borderkeyword-input with-border','name' : 'projectSkill', 'placeholder': 'Add Skills'|trans} }) }}
-                                        <button class="keyword-input-button ripple-effect"><i class="icon-material-outline-add"></i></button>
-                                    </div>
-                                    <div class="keywords-list" style="height: auto;"><!-- keywords go here --></div>
-                                    <div class="clearfix"></div>
-                                </div>
-
+                                <h5>Note priority</h5>
+                                {{ form_widget(form.priority,{ 'attr': {'aria-expanded':'false','title':'Select Priority','role':'button','data-toggle':'dropdown','class' : 'btn dropdown-toggle bs-placeholder btn-default','name' : 'priority', 'placeholder': 'e.g. web'|trans} }) }}
                             </div>
                         </div>
 
                         <div class="col-xl-12">
                             <div class="submit-field">
-                                <h5>Describe Your Project</h5>
-                                {{ form_widget(form.projectDescription,{ 'attr': {'type':'textarea','class' : 'with-border','name' : 'projectDescription', 'placeholder': 'Description'|trans} }) }}
+                                <h5>Describe Your Note</h5>
+                                {{ form_widget(form.noteText,{ 'attr': {'type':'textarea','class' : 'with-border','name' : 'noteText', 'placeholder': 'Description'|trans} }) }}
                                 <!-- upload button-->
 
                             </div>
@@ -117,7 +60,7 @@
 
         <div class="col-xl-12">
             <!-- Button -->
-            <button class="button ripple-effect big margin-top-30" type="submit" value="post">Post a Project </button>
+            <button class="button ripple-effect big margin-top-30" type="submit" value="post">Add a Note</button>
         </div>
 
         {{ form_end(form) }}

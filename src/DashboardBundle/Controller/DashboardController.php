@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use UserBundle\Entity\Freelancer;
 
 
 class DashboardController extends Controller
@@ -27,6 +28,7 @@ class DashboardController extends Controller
     {
         return $this->render('DashboardBundle:Employer:dashboard.html.twig');
     }
+
 
     /**
      * @Security("has_role('ROLE_FREELANCER')")
@@ -60,7 +62,21 @@ class DashboardController extends Controller
 
             return new JsonResponse(["message" => 'Note added :)', "validate" => true, "redirect" => $url]);
         }
+    }
 
+
+        /**
+         * @Security("has_role('ROLE_EMPLOYER')")
+         */
+
+        public function delete_self_noteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $self_note=$em->getRepository(Note::class)->find($id);
+        $em->remove($self_note);
+        $em->flush();
+        return $this->render('NoteBundle:Freelancer::self_notes_list.html.twig');
 
     }
+
 }
