@@ -21,6 +21,8 @@ class ProjectController extends Controller
     public function projectCreateAction(Request $request)
     {
         $project = new Project();
+        $project->setProjectStartDay(new \DateTime('now'));
+
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(ProjectType::class,$project);
         $form->handleRequest($request);
@@ -50,31 +52,37 @@ class ProjectController extends Controller
      * @Security("has_role('ROLE_EMPLOYER')")
      */
 
-    public function delete_manage_projectsAction($manage_project)
+    public function delete_manage_projectsAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        $manage_project=$em->getRepository(Project::class)->find($id);
         $em->remove($manage_project);
         $em->flush();
         return $this->redirectToRoute('list_manage_projects');
 
     }
 
+
     /**
      * @Security("has_role('ROLE_EMPLOYER')")
      */
 
-    public function update_manage_projectsAction(Request $request,Project $manage_project)
+    public function update_manage_projectsAction(Request $request,$id)
     {
-        $em=$this->getDoctrine()->getManager();
-        $form=$this->createForm(ProjectType::class,$manage_project);
-        $form=$form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $manage_projects=$em->getRepository(Project::class)->find($id);
+        $form = $this->createForm(ProjectType::class,$manage_projects);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()&& $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($manage_projects);
             $em->flush();
-            return $this->redirectToRoute('list_manage_projects');
+            return $this->redirect($this->generateUrl('list_manage_projects'));
         }
-        return $this->render('@Project/Employer/post_project.html.twig', ["form" => $form->createView()]);
-
+        return $this->render('@Project/Employer/post_project.html.twig',['form'=>$form->createView()]);
     }
+
+
 
 
     /**

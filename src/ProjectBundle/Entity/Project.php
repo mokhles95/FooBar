@@ -70,6 +70,31 @@ class Project
      */
     private $projectDescription;
 
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="projectStartDay", type="datetime", options={"default"="CURRENT_TIMESTAMP"})
+     */
+    private $projectStartDay;
+
+    /**
+     * @return \DateTime
+     */
+    public function getProjectStartDay()
+    {
+        return $this->projectStartDay;
+    }
+
+    /**
+     * @param \DateTime $projectStartDay
+     */
+    public function setProjectStartDay($projectStartDay)
+    {
+        $this->projectStartDay = $projectStartDay;
+    }
+
+
     /**
      * @ORM\OneToMany(targetEntity="BidBundle\Entity\Bid", mappedBy="project")
      */

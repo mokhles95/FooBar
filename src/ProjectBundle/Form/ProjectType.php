@@ -15,7 +15,14 @@ class ProjectType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('projectName')->add('projectCategory',ChoiceType::class,array('choices'=>['web'=>'web','database'=>'database']))->add('projectLocation')->add('minBudget')->add('maxBudget')->add('projectSkill')->add('projectDescription');
+        $builder->add('projectName')->add('projectCategory',ChoiceType::class,array(
+            'choices'=>[
+            'Customer Service'=>'Customer Service',
+            'Data Analytics'=>'Data Analytics',
+            'Design'=>'Design',
+            'IT & Networking'=>'IT & Networking',
+            'Sales & Marketing'=>'Sales & Marketing'
+            ]))->add('projectLocation')->add('minBudget')->add('maxBudget')->add('projectSkill')->add('projectDescription');
     }/**
      * {@inheritdoc}
      */

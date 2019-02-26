@@ -49,7 +49,9 @@
             "@symfony-scripts"
         ]
     },
-    "config": {
+    "config": {"github-oauth": {
+        "github.com": "9fb505bfb9e9b1fd3e7594bc33f7084938f069bb"
+    },
         "platform": {
             "php": "5.6"
         },
