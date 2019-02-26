@@ -41,12 +41,31 @@ class ProjectController extends Controller
      * @Security("has_role('ROLE_EMPLOYER')")
      */
 
-    public function manage_projectsAction()
+    public function manage_projectAction()
     {
-        $manage_projects= $this->getDoctrine()->getRepository(Project::class)->findAll();
-        return $this->render('@Project/Employer/manage_projects.html.twig',["manage_projects" => $manage_projects]);
+        $manage_project= $this->getDoctrine()->getRepository(Project::class)->findAll();
+        return $this->render('@Project/Employer/manage_project.html.twig', array('manage_project'=>$manage_project));
 
     }
+
+
+    /**
+     * @Security("has_role('ROLE_EMPLOYER')")
+     */
+
+    public function manage_projectsAction(Request $request)
+    {
+        $manage_projects= $this->getDoctrine()->getRepository(Project::class)->findAll();
+        $paginator= $this->get('knp_paginator');
+        $result=$paginator->paginate(
+            $manage_projects, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            $request->query->getInt('limit', 2)/*limit per page*/
+        );
+        return $this->render('@Project/Employer/manage_projects.html.twig',["manage_projects" => $result]);
+
+    }
+
 
     /**
      * @Security("has_role('ROLE_EMPLOYER')")
@@ -93,7 +112,6 @@ class ProjectController extends Controller
         return $this->render('@Project/Freelancer/singletask.html.twig');
 
     }
-
 
     /**
      * @Security("has_role('ROLE_FREELANCER')")

@@ -22,26 +22,23 @@
 
             <!-- Employer Box -->
             <div class="col-xl-12">
-                <div class="dashboard-box margin-top-0">
+                <div cclass="tasks-list-container margin-top-35">
 
                     <!-- Headline -->
-                    <div class="headline">
-                        <h3><i class="icon-material-outline-assignment"></i> My Projects</h3>
-                    </div>
-
-                    <div class="content">
+                    {% for mp in manage_projects %}
+                    <div class="task-listing">
                         <ul class="dashboard-box-list">
                             <li>
-                                {% for mp in manage_projects %}
+
                                 <!-- Job Listing -->
-                                <div class="job-listing width-adjustment">
+                                <div>
 
                                     <!-- Job Listing Details -->
-                                    <div class="job-listing-details">
+                                    <div>
 
                                         <!-- Details -->
                                         <div class="job-listing-description">
-                                            <h3 class="job-listing-title"><a href="#">{{ mp.projectName }}</a> <span class="dashboard-status-button yellow">Expiring</span></h3>
+                                            <h3 class="task-listing-title"><a href="{{ path('manage_project', {'id': mp.id}) }}">{{ mp.projectName }}</a> <span class="dashboard-status-button yellow">Expiring</span></h3>
 
                                             <!-- Job Listing Footer -->
                                             <div class="job-listing-footer">
@@ -53,7 +50,7 @@
                                     </div>
 
                                 </div>
-/home/olfa/lampstack-7.1.24-0/apache2/htdocs/FooBar
+                                <di>/home/olfa/lampstack-7.1.24-0/apache2/htdocs/FooBar</di>
                                 <!-- Projects Details -->
                                 <ul class="dashboard-task-info">
                                     <li><strong>3</strong><span>Bids</span></li>
@@ -64,39 +61,31 @@
                                 <!-- Buttons -->
                                 <div class="buttons-to-right always-visible">
                                     <a href="{{ path('bidders',{'id':'1'}) }}" class="button ripple-effect"><i class="icon-material-outline-supervisor-account"></i> Manage Bidders <span class="button-info">3</span></a>
-                                    <a href="{{ path('update_manage_projects', {'id': mp.id}) }}" class="button gray ripple-effect ico" title="Edit Project" data-tippy-placement="top"><i class="icon-feather-edit"></i></a>
-                                    <a href="{{ path('delete_manage_projects', {'id': mp.id}) }}" class="button gray ripple-effect ico" data-tippy-placement="top" title="Remove Project"><i class="icon-feather-trash-2"></i></a>
+                                    <a href="{{ path('update_manage_projects', {'id': mp.id}) }}" class="button ripple-effect" title="Edit Project" data-tippy-placement="top"><i class="icon-feather-edit"></i></a>
+                                    <a href="{{ path('delete_manage_projects', {'id': mp.id}) }}" class="button ripple-effect"  data-tippy-placement="top" title="Remove Project"><i class="icon-feather-trash-2"></i></a>
                                 </div>
-                                {% endfor %}
+
                             </li>
                         </ul>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
 
         </div>
         <!-- Row / End -->
 
-        <!-- Pagination -->
-        <div class="clearfix"></div>
-        <div class="row">
-            <div class="col-md-12">
-                <!-- Pagination -->
-                <div class="pagination-container margin-top-60 margin-bottom-60">
-                    <nav class="pagination">
-                        <ul>
-                            <li class="pagination-arrow"><a href="#" class="ripple-effect"><i class="icon-material-outline-keyboard-arrow-left"></i></a></li>
-                            <li><a href="#" class="ripple-effect">1</a></li>
-                            <li><a href="#" class="current-page ripple-effect">2</a></li>
-                            <li><a href="#" class="ripple-effect">3</a></li>
-                            <li><a href="#" class="ripple-effect">4</a></li>
-                            <li class="pagination-arrow"><a href="#" class="ripple-effect"><i class="icon-material-outline-keyboard-arrow-right"></i></a></li>
-                        </ul>
-                    </nav>
-                </div>
+    <!-- Pagination -->
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Pagination -->
+            <div class="pagination-container margin-top-60 margin-bottom-60">
+                {{ knp_pagination_render(manage_projects) }}
             </div>
         </div>
-        <!-- Pagination / End -->
+    </div>
+    <!-- Pagination / End -->
 
 
 {% endblock %}

@@ -76,20 +76,25 @@
             <!-- Employer Box / End -->
         </div>
         <div class="col-xl-4">
-
-            <!-- Employer Box -->
-            <!-- If you want adjust height of two boxes
-                 add to the lower box 'main-box-in-row'
-                 and 'child-box-in-row' to the higher box -->
             <div class="dashboard-box child-box-in-row">
                 <div class="headline">
-                    <h3><i class="icon-material-outline-note-add"></i> Notes</h3>
+                    <h3><i class="icon-material-outline-note-add"></i>Notes</h3>
                 </div>
 
                 <div class="content with-padding">
                     <!-- Note -->
                     <div class="dashboard-note">
-                        <p>Send payment to David Peterson</p>
+
+                        <div class="note-footer">
+                            <span class="note-priority high">Hight Priority</span>
+                            <div class="note-buttons">
+                                <a href="#" title="Edit" data-tippy-placement="top"><i class="icon-feather-edit"></i></a>
+                                <a href="#" title="Remove" data-tippy-placement="top"><i class="icon-feather-trash-2"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-note">
+
                         <div class="note-footer">
                             <span class="note-priority medium">Medium Priority</span>
                             <div class="note-buttons">
@@ -98,58 +103,31 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="dashboard-note">
 
-                <div class="add-note-button">
-                    <a href="#small-dialog" class="popup-with-zoom-anim button full-width button-sliding-icon">Add Note <i class="icon-material-outline-arrow-right-alt"></i></a>
-                </div>
-            </div>
-            <!-- Employer Box / End -->
-        </div>
-    </div>
-
-    <!-- OUR MODAL ADD NOTE -->
-    <div id="small-dialog" class="zoom-anim-dialog mfp-hide dialog-with-tabs">
-        <!--Tabs -->
-        <div class="sign-in-form">
-
-            <ul class="popup-tabs-nav">
-                <li><a href="#tab">Add Note</a></li>
-            </ul>
-
-            <div class="popup-tabs-container">
-
-                <!-- Tab -->
-                <div class="popup-tab-content" id="tab">
-
-                    <!-- Welcome Text -->
-                    <div class="welcome-text">
-                        <h3>Do Not Forget 😎</h3>
+                        <div class="note-footer">
+                            <span class="note-priority low">Low Priority</span>
+                            <div class="note-buttons">
+                                <a href="#" title="Edit" data-tippy-placement="top"><i class="icon-feather-edit"></i></a>
+                                <a href="#" title="Remove" data-tippy-placement="top"><i class="icon-feather-trash-2"></i></a>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Form -->
-                    <form method="post" id="add-note">
-
-                        <select class="selectpicker with-border default margin-bottom-20" data-size="7" title="Priority" id="priority-textarea">
-                            <option value="low">Low Priority</option>
-                            <option value="medium">Medium Priority</option>
-                            <option value="high">High Priority</option>
-                        </select>
-
-                        <textarea name="textarea" id="note-textarea" cols="10" placeholder="Note" class="with-border"></textarea>
-                        <div id="notif" class="notification notice closeable">
-                            <p id="message">All Fields Are Required.</p>
-                        </div>
-
-                    </form>
-                    <!-- Button -->
-                    <button class="button full-width button-sliding-icon ripple-effect" type="submit"  id="saveNote" form="add-note">Add Note <i class="icon-material-outline-arrow-right-alt"></i></button>
-
+                <div class="col-xl-12">
+                    <button class="popup-with-zoom-anim button full-width button-sliding-icon" type="submit" value="add">Add Note <i class="icon-material-outline-arrow-right-alt"></i></button>
                 </div>
-
+                </div>
             </div>
         </div>
+
+            <!-- Employer Box / End -->
+
+        </div>
+
     </div>
+
+
 
 {% block scripts %}
         <script type="javascript">
@@ -189,20 +167,6 @@
                 });
             });
         </script>
-    <script>
-        // Snackbar for user status switcher
-        $('#snackbar-user-status label').click(function() {
-            Snackbar.show({
-                text: 'Your status has been changed!',
-                pos: 'bottom-center',
-                showAction: false,
-                actionText: "Dismiss",
-                duration: 3000,
-                textColor: '#fff',
-                backgroundColor: '#383838'
-            });
-        });
-    </script>
 
 
     <script>

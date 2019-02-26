@@ -2,6 +2,10 @@ create_task:
     path:     /projectCreate
     defaults: { _controller: ProjectBundle:Project:projectCreate }
 
+manage_project:
+    path:     /manage_project/{id}
+    defaults: { _controller: ProjectBundle:Project:manage_project }
+
 list_manage_projects:
     path:     /manage_projects
     defaults: { _controller: ProjectBundle:Project:manage_projects }
