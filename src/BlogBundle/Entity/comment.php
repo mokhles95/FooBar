@@ -2,16 +2,17 @@
 
 namespace BlogBundle\Entity;
 
-use ReviewBundle\Entity\Review;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use UserBundle\Entity\Freelancer;
 
 /**
- * comment
+ * Comment
  *
  * @ORM\Table(name="comment")
- * @ORM\Entity(repositoryClass="BlogBundle\Repository\commentRepository")
+ * @ORM\Entity(repositoryClass="BlogBundle\Repository\CommentRepository")
  */
-class comment
+class Comment
 {
     /**
      * @var int
@@ -25,9 +26,42 @@ class comment
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="commentContent", type="text")
      */
-    private $description;
+    private $commentContent;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mail", type="string", length=255)
+     */
+    private $mail;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Article",inversedBy = "comments", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="article_id",referencedColumnName="id")
+     */
+    private $article;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Freelancer", inversedBy="comments")
+     * @ORM\JoinColumn(name="freelancer_id",referencedColumnName="id")
+     */
+    private $freelancers;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="createAt", type="date")
+     */
+    protected $createdAt;
 
     /**
      * Get id
@@ -40,28 +74,106 @@ class comment
     }
 
     /**
-     * Set description
+     * Set commentContent
      *
-     * @param string $description
+     * @param string $commentContent
      *
-     * @return comment
+     * @return Comment
      */
-    public function setDescription($description)
+    public function setCommentContent($commentContent)
     {
-        $this->description = $description;
+        $this->commentContent = $commentContent;
 
         return $this;
     }
 
     /**
+     * Get commentContent
+     *
      * @return string
      */
-    public function getDescription()
+    public function getCommentContent()
     {
-        return $this->description;
+        return $this->commentContent;
     }
 
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 
+    /**
+     * @return string
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+
+    /**
+     * @param string $mail
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFreelancers()
+    {
+        return $this->freelancers;
+    }
+
+    /**
+     * @param mixed $freelancers
+     */
+    public function setFreelancers($freelancers)
+    {
+        $this->freelancers = $freelancers;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * @param mixed $article
+     */
+    public function setArticle($article)
+    {
+        $this->article = $article;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param string $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
 }
-

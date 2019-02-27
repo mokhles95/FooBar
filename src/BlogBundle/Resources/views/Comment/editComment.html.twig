@@ -1,15 +1,11 @@
-<html lang="en">
-
+<html>
 <head>
 
-	<!-- Basic Page Needs
-    ================================================== -->
 	<title>FooBar</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<!-- CSS
-    ================================================== -->
+	<!-- CSS -->
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/colors/blue.css') }}">
 
@@ -20,34 +16,18 @@
 <div class="row">
 	<div class="col-xl-12">
 
-		<h3 class="margin-top-35 margin-bottom-30">Add Comment</h3>
+		<h3 class="margin-top-35 margin-bottom-30">Edit Comment</h3>
 
 		<!-- Form -->
         {{ form_start(form) }}
 
-			<div class="row">
-				<div class="col-xl-3">
-					<div class="input-with-icon-left no-border">
-						<i class="icon-material-outline-account-circle"></i>
-                        {{ form_widget(form.name) }}
-					</div>
-				</div>
-				<div class="col-xl-3">
-					<div class="input-with-icon-left no-border">
-						<i class="icon-material-baseline-mail-outline"></i>
-                        {{ form_widget(form.mail) }}
-					</div>
-				</div>
-
-			</div>
 		    <div class="row">
-				<div class="col-xl-12">
+				<div class="col-xl-7">
 
 					{{ form_widget(form.commentContent) }}
 
 				</div>
 			</div>
-
 
         {{ form_end(form) }}
 

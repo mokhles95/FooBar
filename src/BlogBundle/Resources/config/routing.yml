@@ -2,29 +2,28 @@ blog_homepage:
     path:     /
     defaults: { _controller: BlogBundle:Default:index }
 
-blog_pageBlog:
-    path:     /pageBlog
-    defaults: { _controller: BlogBundle:Comment:pageBlog }
-
 blog_pageBlogPost:
     path:     /pageBlogPost
     defaults: { _controller: BlogBundle:Comment:pageBlogPost }
 
-blog_affiche:
-    path:     /affiche
-    defaults: { _controller: BlogBundle:Comment:affiche }
 
-blog_ajout:
-    path:     /ajout
-    defaults: { _controller: BlogBundle:Comment:ajout }
+
+blog_addComment:
+    path:     /addComment/{idArticle}
+    defaults: { _controller: BlogBundle:Comment:addComment }
+
+blog_viewComment:
+    path:     /viewComment
+    defaults: { _controller: BlogBundle:Comment:viewComment }
+
+blog_editComment:
+    path:     /edit/{id}
+    defaults: { _controller: BlogBundle:Comment:edit }
 
 blog_delete:
     path:     /delete/{id}
     defaults: { _controller: BlogBundle:Comment:supprimer }
 
-blog_edit:
-    path:     /edit/{id}
-    defaults: { _controller: BlogBundle:Comment:edit }
 
 
 blog_ajoutArticle:
@@ -32,8 +31,17 @@ blog_ajoutArticle:
     defaults: { _controller: BlogBundle:Article:add }
 
 blog_afficheArticle:
-    path:     /show
-    defaults: { _controller: BlogBundle:Article:show }
+    path:     /afficheArticle
+    defaults: { _controller: BlogBundle:Article:afficheArticle }
+
+blog_editArticle:
+    path:     /editArticle/{id}
+    defaults: { _controller: BlogBundle:Article:edit }
+
+blog_deleteArticle:
+    path:     /deleteArticle/{id}
+    defaults: { _controller: BlogBundle:Article:supprimer }
+
 
 blog_listArticle:
     path:     /list

@@ -1,57 +1,73 @@
 <!doctype html>
 <html lang="en">
 
-<!-- Mirrored from www.vasterad.com/themes/hireo/pages-blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 08 Feb 2019 09:49:07 GMT -->
 <head>
 
-	<!-- Basic Page Needs
-    ================================================== -->
 	<title>FooBar</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<!-- CSS
-    ================================================== -->
+	<!-- CSS -->
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/colors/blue.css') }}">
 
 </head>
+
 <body>
-
-<div class="row">
+<div class="container">
 	<div class="col-xl-12">
+	  <div class="panel panel-primary">
 
-		<h3 class="margin-top-35 margin-bottom-30">Add Comment</h3>
+		  <section class="comments">
+			  <h3 class="margin-top-45 margin-bottom-0">Comments</h3>
 
-		<!-- Form -->
-		<form method="post" id="add-comment">
+			      <div class="blog-post-content">
+                      {% for i in comment %}
+					  <div class="panel-body">
+						  <ul class="widget-tabs">
+							  <li>
+								  <div class="avatar">
+									  <img src="{{ asset('images/user-avatar-placeholder.png') }}" alt="">
+								  </div>
 
-			<div class="row">
-				<div class="col-xl-6">
-					<div class="input-with-icon-left no-border">
-						<i class="icon-material-outline-account-circle"></i>
-						<input type="text" class="input-text" name="commentname" id="namecomment" placeholder="Name" required/>
-					</div>
-				</div>
-				<div class="col-xl-6">
-					<div class="input-with-icon-left no-border">
-						<i class="icon-material-baseline-mail-outline"></i>
-						<input type="text" class="input-text" name="emailaddress" id="emailaddress" placeholder="Email Address" required/>
-					</div>
-				</div>
-			</div>
+								  <div class="comment-content">
+									  <div class="comment-by">{{ i.name }}
+										  <span class="date"> {{ "now"|date("d/m/Y, H:m" ) }}</span>
+										  <a href="{{ path('blog_addComment',{'idArticle':i.id}) }}" class="reply">Reply</a>
+                                          {{ i.commentContent }} <br>
+										  <a href="{{ path('blog_delete',{'id':i.id}) }}" class="icon-feather-trash">Delete</a>
+										  <a href="{{ path('blog_editComment',{'id':i.id}) }}" class="icon-feather-edit">Edit</a>
+									  </div>
+								  </div>
 
-			<textarea  name="comment-content" cols="30" rows="5" placeholder="Comment"></textarea>
-		</form>
+								  <ul>
 
-		<!-- Button -->
-		<button class="button button-sliding-icon ripple-effect margin-bottom-40" type="submit" form="add-comment">Add Comment <i class="icon-material-outline-arrow-right-alt"></i></button>
+									  <li>
+										  <div class="avatar"><img src="{{ asset('images/user-avatar-placeholder.png') }}" alt=""></div>
+										  <div class="comment-content"><div class="arrow-comment"></div>
+											  <div class="comment-by">{{ i.name }}
+												  <span class="date"> {{ "now"|date("d/m/Y, H:m" ) }}</span>
+												  <a href="{{ path('blog_addComment',{'idArticle':i.id}) }}" class="reply"> Reply</a>
+                                                  {{ i.commentContent }} <br>
+												  <a href="{{ path('blog_delete',{'id':i.id}) }}" class="icon-feather-trash">Delete</a>
+												  <a href="{{ path('blog_editArticle',{'id':i.id}) }}" class="icon-feather-edit">Edit</a>
+											  </div>
 
+
+										  </div>
+									  </li>
+
+								  </ul>
+							  </li>
+						  </ul>
+					  </div>
+						  <a href="{{ path('blog_addComment',{'idArticle':i.id}) }}" class="button icon-feather-plus-square">Comment</a>
+                      {% endfor %}
+				  </div>
+		  </section>
+
+	  </div>
 	</div>
 </div>
-<!-- Leava a Comment / End -->
-
 </body>
-
-<!-- Mirrored from www.vasterad.com/themes/hireo/pages-blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 08 Feb 2019 09:49:26 GMT -->
 </html>

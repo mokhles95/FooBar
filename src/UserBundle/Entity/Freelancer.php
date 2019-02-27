@@ -2,6 +2,8 @@
 
 namespace UserBundle\Entity;
 
+use BlogBundle\Entity\Comment;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +58,10 @@ class Freelancer
      */
     private $intro;
 
+    /**
+     * @ORM\OneToMany(targetEntity="BlogBundle\Entity\Comment", mappedBy="freelencer")
+     */
+    private $comments;
 
     /**
      * Get id
@@ -186,5 +192,22 @@ class Freelancer
     {
         return $this->intro;
     }
+
+    /**
+     * @return ArrayCollection|Comment[]
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param ArrayCollection $comments
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
+    }
+
 }
 

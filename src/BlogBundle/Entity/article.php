@@ -2,15 +2,18 @@
 
 namespace BlogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use UserBundle\Entity\User;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * article
+ * Article
  *
  * @ORM\Table(name="article")
- * @ORM\Entity(repositoryClass="BlogBundle\Repository\articleRepository")
+ * @ORM\Entity(repositoryClass="BlogBundle\Repository\ArticleRepository")
  */
-class article
+class Article
 {
     /**
      * @var int
@@ -31,15 +34,47 @@ class article
     /**
      * @var string
      *
-     * @ORM\Column(name="comment", type="text")
+     * @ORM\Column(name="content", type="text")
      */
-    private $comment;
+    private $content;
 
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
+     * @Assert\File(mimeTypes={ "application/pdf" })
+     */
+    private $file;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="createAt", type="date")
+     */
+    protected $createdAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", cascade={"persist", "merge"})
+     * @ORM\JoinColumn(name="user_id",referencedColumnName="id")
+(     */
+    private $user;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="article", cascade={"remove"})
+     */
+    private $comments;
+
+
+
+    public function __construct()
+    {
+        $this->comments  = new ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return int('
      */
     public function getId()
     {
@@ -51,7 +86,7 @@ class article
      *
      * @param string $title
      *
-     * @return article
+     * @return Article
      */
     public function setTitle($title)
     {
@@ -71,27 +106,97 @@ class article
     }
 
     /**
-     * Set comment
+     * Set content
      *
-     * @param string $comment
+     * @param string $content
      *
-     * @return article
+     * @return Article
      */
-    public function setComment($comment)
+    public function setContent($content)
     {
-        $this->comment = $comment;
+        $this->content = $content;
 
         return $this;
     }
 
     /**
-     * Get comment
+     * Get content
      *
      * @return string
      */
-    public function getComment()
+    public function getContent()
     {
-        return $this->comment;
+        return $this->content;
     }
-}
 
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param string $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * @return ArrayCollection|Comment[]
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    public function addComment($comment)
+    {
+        return $this->comments[] = $comment;
+    }
+
+    /**
+     * @param ArrayCollection $comments
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param string $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+
+}

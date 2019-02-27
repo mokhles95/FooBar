@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class commentType extends AbstractType
 {
@@ -14,12 +15,14 @@ class commentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('description',null,['attr'=>['style'=>'width: 330px;height: 300px;']])
-            ->add ('save', SubmitType::class, ['label' => 'Leave a Comment','attr' => ['class' =>'button full-width button-sliding-icon ripple-effect']]);
+        $builder->add('name')
+            ->add('mail')
+            ->add('commentContent',null,['attr'=>['style'=>'width: 600px;height: 200px;']])
+            ->add ('save', SubmitType::class, ['label' => 'Add a Comment','attr' => ['class' =>'button button-sliding-icon ripple-effect margin-bottom-40']]);
 
     }/**
-     * {@inheritdoc}
-     */
+ * {@inheritdoc}
+ */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
