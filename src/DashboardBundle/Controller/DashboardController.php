@@ -12,15 +12,12 @@ use Symfony\Component\HttpFoundation\Request;
 class DashboardController extends Controller
 
 {
-
-
     /**
      * @Security("has_role('ROLE_FREELANCER')")
      */
     public function freelancerDashboardAction()
     {
-        return $this->render('DashboardBundle:Dashboard:freelancer_dashboard.html.twig', array(// ...
-        ));
+        return $this->render('DashboardBundle:Freelancer:dashboard.html.twig');
     }
 
     /**
@@ -28,11 +25,12 @@ class DashboardController extends Controller
      */
     public function employerDashboardAction()
     {
-        return $this->render('DashboardBundle:Dashboard:employer_dashboard.html.twig', array(// ...
-        ));
+        return $this->render('DashboardBundle:Employer:dashboard.html.twig');
     }
 
-
+    /**
+     * @Security("has_role('ROLE_FREELANCER')")
+     */
     public function newAction(Request $request)
     {
         //parameters from request
@@ -52,6 +50,7 @@ class DashboardController extends Controller
             $note = new Note();
             $note->setNoteText($noteText);
             $note->setPriority($priorityText);
+
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($note);

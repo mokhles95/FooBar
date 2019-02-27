@@ -2,6 +2,8 @@
 
 namespace ProjectBundle\Controller;
 
+use BidBundle\Entity\Bid;
+use BidBundle\Form\BidType;
 use ProjectBundle\Entity\Project;
 use ProjectBundle\Form\ProjectType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -32,17 +34,20 @@ class ProjectController extends Controller
 
     }
 
-    /**
-     * @Security("has_role('ROLE_EMPLOYER')")
-     */
 
+    /**
+     * @Security("has_role('ROLE_FREELANCER')")
+     */
     public function projectsAction()
     {
         $projects= $this->getDoctrine()->getRepository(Project::class)->findAll();
-        return $this->render('@Project/Employer/tasks.html.twig',["projects" => $projects]);
+        return $this->render('@Project/Freelancer/tasks.html.twig',["projects" => $projects]);
 
     }
 
+    /**
+     * @Security("has_role('ROLE_EMPLOYER')")
+     */
 
     public function manage_projectsAction()
     {
@@ -50,6 +55,10 @@ class ProjectController extends Controller
         return $this->render('@Project/Employer/manage_projects.html.twig',["manage_projects" => $manage_projects]);
 
     }
+
+    /**
+     * @Security("has_role('ROLE_EMPLOYER')")
+     */
 
     public function delete_manage_projectsAction($manage_project)
     {
@@ -63,12 +72,57 @@ class ProjectController extends Controller
     /**
      * @Security("has_role('ROLE_FREELANCER')")
      */
-
-    public function detailsAction()
+    public function projectsListAction()
     {
-        return $this->render('ProjectBundle:Freelancer:details.html.twig');
-        //, array(
-        //            // ...
-        //        ));
+        $projects= $this->getDoctrine()->getRepository(Project::class)->findAll();
+        return $this->render('@Project/Freelancer/taskslist.html.twig',["projects" => $projects]);
+
     }
+
+
+
+    /**
+     * @Security("has_role('ROLE_FREELANCER')")
+     */
+    public function singleProjectAction(Request $request,Project $project)
+    {
+
+        $em=$this->getDoctrine()->getManager();
+        $bid = new Bid();
+        $form=$this->createForm(BidType::class,$bid);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted())
+        {
+            $bid->setProject($project);
+            $em->persist($bid);
+            $em->flush();
+            return $this->redirectToRoute('freelancer_projects');
+        }
+
+        return $this->render('@Project/Freelancer/singletask.html.twig',["project" => $project,"form"=>$form->createView()]);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

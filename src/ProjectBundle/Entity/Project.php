@@ -66,9 +66,39 @@ class Project
     /**
      * @var string
      *
-     * @ORM\Column(name="projectDescription", type="string", length=255)
+     * @ORM\Column(name="projectDescription", type="text", length=255)
      */
     private $projectDescription;
+
+    /**
+     * @ORM\OneToMany(targetEntity="BidBundle\Entity\Bid", mappedBy="project")
+     */
+    private $bids;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="employerId", type="integer")
+     */
+    private $employerId;
+
+    /**
+     * @return int
+     */
+    public function getEmployerId()
+    {
+        return $this->employerId;
+    }
+
+    /**
+     * @param int $employerId
+     */
+    public function setEmployerId($employerId)
+    {
+        $this->employerId = $employerId;
+    }
+
+
 
 
     /**
@@ -248,5 +278,45 @@ class Project
     {
         return $this->projectDescription;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->bids = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add bid
+     *
+     * @param \BidBundle\Entity\Bid $bid
+     *
+     * @return Project
+     */
+    public function addBid(\BidBundle\Entity\Bid $bid)
+    {
+        $this->bids[] = $bid;
+
+        return $this;
+    }
+
+    /**
+     * Remove bid
+     *
+     * @param \BidBundle\Entity\Bid $bid
+     */
+    public function removeBid(\BidBundle\Entity\Bid $bid)
+    {
+        $this->bids->removeElement($bid);
+    }
+
+    /**
+     * Get bids
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBids()
+    {
+        return $this->bids;
+    }
+}

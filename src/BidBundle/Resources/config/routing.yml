@@ -3,10 +3,19 @@ bids:
     defaults: { _controller: BidBundle:Bid:bids }
 
 bidders:
-    path:     /bidders
+    path:     /bidders/{id}
     defaults: { _controller: BidBundle:Bid:manageBidders }
 
-place:
-    path:     /place
-    defaults: { _controller: BidBundle:Bid:createBid }
+place_bid:
+    path:     /place/{deliveryTime?}/{hourlyRate?}
+    defaults: { _controller: BidBundle:Bid:placeBid }
 
+
+cancel_bid:
+    path:     /cancel
+    defaults: { _controller: BidBundle:Bid:canelBid }
+
+
+edit_bid:
+    path:     /edit
+    defaults: { _controller: BidBundle:Bid:editBid }
